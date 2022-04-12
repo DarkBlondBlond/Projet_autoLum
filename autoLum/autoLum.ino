@@ -46,10 +46,10 @@ void loop() {
       digitalWrite(relayPin4, LOW);
     } else {
       // turn LED off:
-      digitalWrite(ledPinMain, LOW);
+      digitalWrite(ledPinMain, HIGH);
     }
   }
-  while (buttonState == LOW && digitalRead(ledPinMain) == HIGH) {  // contrôle automatique
+  else if (buttonState == LOW && digitalRead(ledPinMain) == HIGH) {  // contrôle automatique
     Serial.print("Analog reading = ");
     Serial.print(photocellReading); // valeur codée sur 10 bits (0-1023)
     
