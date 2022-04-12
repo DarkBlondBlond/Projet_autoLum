@@ -11,6 +11,8 @@ int photocellReading; // the analog reading from the analog resistor divider
 
 int buttonState = 0;         // variable for reading the pushbutton status
 
+bool actif = true;  // détermine si le système est actif ou non
+
 void setup() {
   pinMode(ledPinMain, OUTPUT);
   pinMode(relayPin1, OUTPUT);
@@ -53,25 +55,25 @@ void loop() {
     Serial.print("Analog reading = ");
     Serial.print(photocellReading); // valeur codée sur 10 bits (0-1023)
     
-    if (photocellReading < 95) {
+    if (photocellReading < 350) {
       digitalWrite(relayPin1, LOW);
       digitalWrite(relayPin2, LOW);
       digitalWrite(relayPin3, LOW);
       digitalWrite(relayPin4, LOW);
       Serial.println(" - Noir");
-    } else if (photocellReading < 120) {
+    } else if (photocellReading < 420) {
       digitalWrite(relayPin1, LOW);
       digitalWrite(relayPin2, LOW);
       digitalWrite(relayPin3, LOW);
       digitalWrite(relayPin4, HIGH);
       Serial.println(" - Sombre");
-    } else if (photocellReading < 200) {
+    } else if (photocellReading < 500) {
       digitalWrite(relayPin1, LOW);
       digitalWrite(relayPin2, LOW);
       digitalWrite(relayPin3, HIGH);
       digitalWrite(relayPin4, HIGH);
       Serial.println(" - Lumiere");
-    } else if (photocellReading < 320) {
+    } else if (photocellReading < 600) {
       digitalWrite(relayPin1, LOW);
       digitalWrite(relayPin2, HIGH);
       digitalWrite(relayPin3, HIGH);
