@@ -93,7 +93,7 @@ void loop() {
         Serial.println(" - Noir");
         prevMillis = currentMillis;
       }
-    } else if (photocellReading < 420) {
+    } else if (photocellReading < 444) {
       if((currentMillis-prevMillis)>10000) {
         digitalWrite(relayPin1, LOW);
         digitalWrite(relayPin2, LOW);
@@ -102,7 +102,7 @@ void loop() {
         Serial.println(" - Sombre");
         prevMillis = currentMillis;
       }
-    } else if (photocellReading < 500) {
+    } else if (photocellReading < 555) {
       if((currentMillis-prevMillis)>10000) {
         digitalWrite(relayPin1, LOW);
         digitalWrite(relayPin2, LOW);
@@ -111,7 +111,7 @@ void loop() {
         Serial.println(" - Lumiere");
         prevMillis = currentMillis;
       }
-    } else if (photocellReading < 600) {
+    } else if (photocellReading < 666) {
       if((currentMillis-prevMillis)>10000) {
         digitalWrite(relayPin1, LOW);
         digitalWrite(relayPin2, HIGH);
@@ -130,8 +130,14 @@ void loop() {
         prevMillis = currentMillis;
       }
     }
+  } else if((currentMillis-prevMillis)>10000) {
+      Serial.println("Salle devenu deserte");
+      digitalWrite(relayPin1, HIGH);
+      digitalWrite(relayPin2, HIGH);
+      digitalWrite(relayPin3, HIGH);
+      digitalWrite(relayPin4, HIGH);
   } else {
-      Serial.println("Salle deserte");
+    Serial.println("Salle devenu deserte");
       digitalWrite(relayPin1, HIGH);
       digitalWrite(relayPin2, HIGH);
       digitalWrite(relayPin3, HIGH);
